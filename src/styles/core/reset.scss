@@ -6,13 +6,15 @@
   outline: none;
   text-decoration: none;
   list-style: none;
-  font-family: 'Inter', sans-serif;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  font-family: Inter, sans-serif;
   text-indent: 1px;
+  color: #FFFFFF;
 }
 
 body, html {
-  background-color: #FFFFFF;
+  background-color: #000000;
+  background-image: url(./assets/images/noise.png), url(./assets/images/colors.png);
+  background-position: right bottom;
+  background-size: 100% auto;
+  background-attachment: fixed;
 }
