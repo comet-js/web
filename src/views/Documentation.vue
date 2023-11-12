@@ -15,7 +15,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.login {
+.documentation {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -9,8 +9,8 @@ export default createRouter({
             component: Home,
         },
         {
-            path: '/login',
-            component: () => import('@/views/Login.vue'),
+            path: '/documentation',
+            component: () => import('@/views/Documentation.vue'),
         },
         {
             path: '/about',

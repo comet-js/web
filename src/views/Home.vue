@@ -2,36 +2,34 @@
   <div class="home">
     <div class="home__header">
       <div class="home__left">
-        <div class="home__logo">
-          scuti.io
-        </div>
+        <img class="home__logo" src="../assets/images/logo_white.png">
       </div>
       <div class="home__right">
-        <a href="https://github.com/kozennnn/scuti-renderer" target="_blank">
+        <a href="https://github.com/comet-js" target="_blank">
           <secondary-button>Github</secondary-button>
         </a>
-        <a href="https://discord.gg/s6fQAPt" target="_blank">
+        <a href="https://discord.gg/rBp83wXW8n" target="_blank">
           <secondary-button>Discord</secondary-button>
         </a>
-        <router-link to="/login">
-          <primary-button>Authentication</primary-button>
+        <router-link to="/documentation">
+          <primary-button>Documentation</primary-button>
         </router-link>
       </div>
     </div>
     <div class="home__content">
       <div class="home__title">
-        A blazing fast Habbo rendering engine
+        An elegant server-side application framework
       </div>
       <div class="home__description">
-        Create your own Habbo rooms with furnitures and avatars, like on the real game.
+        Build fast and scalable web applications easily with Comet.
       </div>
       <div class="home__actions">
-        <primary-button>Discover the project</primary-button>
-        <terminal-command command="npm i scuti-renderer@latest" />
+        <primary-button>Get started</primary-button>
+        <terminal-command command="npm i -g @comet-js/cli" />
       </div>
     </div>
     <div class="home__footer">
-      Made with love by all Scuti contributors.
+      Made with love by all Comet contributors.
     </div>
   </div>
 </template>
@@ -80,8 +78,7 @@ export default defineComponent({
   }
 
   &__logo {
-    font-size: 21px;
-    font-weight: 700;
+    height: 40px;
   }
 
   &__content {
@@ -89,38 +86,6 @@ export default defineComponent({
     flex-direction: column;
     gap: 30px;
     align-items: center;
-    padding-right: 200px;
-
-    @media all and (min-width: 1263px) {
-      padding-right: 200px;
-    }
-
-    @media all and (max-width: 1263px) {
-      padding-right: 0px;
-    }
-
-    &:before {
-      content: "";
-      width: 528px;
-      height: 495px;
-      background-image: url(@/assets/images/room.png);
-      position: absolute;
-      mix-blend-mode: overlay;
-      transform: translateY(-50%);
-      top: 50%;
-      right: 147px;
-      z-index: 0;
-      opacity: 0.3;
-      animation: float 6s ease-in-out infinite;
-
-      @media all and (min-width: 1263px) {
-        display: block;
-      }
-
-      @media all and (max-width: 1263px) {
-        display: none;
-      }
-    }
   }
 
   &__title {
@@ -136,7 +101,7 @@ export default defineComponent({
     @media all and (min-width: 596px) {
       font-size: 70px;
       line-height: 65px;
-      max-width: 70%;
+      max-width: 80%;
     }
 
     @media all and (max-width: 596px) {
@@ -185,18 +150,6 @@ export default defineComponent({
     font-weight: 300;
     letter-spacing: -0.2px;
     color: rgba(223, 239, 254, 0.137);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(-50%);
-  }
-  50% {
-    transform: translateY(calc(-50% - 20px));
-  }
-  100% {
-    transform: translateY(-50%);
   }
 }
 </style>
