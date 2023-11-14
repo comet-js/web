@@ -3,7 +3,7 @@
     <div class="documentation__header">
       <div class="documentation__top-bar">
       </div>
-      <div class="documentation__logo" v-if="false">
+      <div class="documentation__logo">
         <img class="home__logo" src="../assets/images/logo_white.png">
       </div>
       <navigation-bar />
@@ -103,6 +103,7 @@ export default defineComponent({
     height: 56px;
     display: flex;
     align-items: center;
+    margin-bottom: 16px;
 
     img {
       height: 40px;

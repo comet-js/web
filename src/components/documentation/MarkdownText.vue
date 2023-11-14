@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {Marked, marked} from 'marked';
+import { marked } from 'marked';
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 import shell from 'highlight.js/lib/languages/shell';
@@ -32,7 +32,6 @@ export default defineComponent({
   computed: {
     html(): string {
       const text: string = this.text.split('------')[1] ?? '';
-
 
       return marked.parse(text);
     },
@@ -57,6 +56,7 @@ export default defineComponent({
     hljs.registerLanguage('typescript', typescript);
     hljs.registerLanguage('shell', shell);
     hljs.highlightAll();
+    setTimeout(() => hljs.highlightAll(), 3000);
   }
 });
 </script>
@@ -83,6 +83,7 @@ export default defineComponent({
     &__description {
       font-size: 18px;
       color: #a1a1aa;
+      margin-top: 4px;
     }
   }
 
@@ -148,7 +149,7 @@ export default defineComponent({
     font-size: 0.85rem;
     line-height: 1.6rem;
     display: block;
-    margin-top: 20px;
+    margin-top: 32px;
     margin-bottom: 32px;
   }
 

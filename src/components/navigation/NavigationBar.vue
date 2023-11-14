@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import NavigationLink from "./NavigationLink.vue";
-import NavigationCategory from "./NavigationCategory.vue";
+import NavigationCategory from './NavigationCategory.vue';
 
 export default defineComponent({
   name: 'NavigationBar',
