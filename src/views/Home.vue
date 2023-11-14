@@ -115,7 +115,8 @@ export default defineComponent({
     text-align: center;
     font-weight: 400;
     letter-spacing: -0.2px;
-    color: #f17798;
+    //color: #f17798;
+    color: #B894AAFF;
 
     @media all and (min-width: 596px) {
       max-width: 40%;
