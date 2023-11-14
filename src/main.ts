@@ -4,7 +4,7 @@ import PrimaryButton from './components/PrimaryButton.vue';
 import router from './router'
 import TerminalCommand from './components/TerminalCommand.vue';
 import SecondaryButton from './components/SecondaryButton.vue';
-import MarkdownText from './components/MarkdownText.vue';
+import MarkdownText from './components/documentation/MarkdownText.vue';
 
 createApp(App)
     .component('primary-button', PrimaryButton)

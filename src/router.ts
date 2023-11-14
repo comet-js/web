@@ -9,12 +9,13 @@ export default createRouter({
             component: Home,
         },
         {
-            path: '/docs/:branch/:page?',
+            path: '/docs/:branch?/:page?',
             component: () => import('@/views/Documentation.vue'),
         },
         {
-            path: '/about',
-            component: () => import('@/views/About.vue'),
+            name: "NotFound",
+            path: "/:notfound(.*)*",
+            component: () => import("@/views/NotFound.vue"),
         },
     ],
 })

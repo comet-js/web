@@ -31,38 +31,10 @@ export default defineComponent({
   },
   computed: {
     html(): string {
-      const text: string = this.text.split('------')[1];
+      const text: string = this.text.split('------')[1] ?? '';
 
-      /*marked.setOptions({
-        highlight: function(code, lang) {
-          if (languages[lang]) {
-            return highlight(code, languages[lang], lang);
-          } else {
-            return code;
-          }
-        }
-      });*/
 
-      const markedRenderer = new Marked(
-          /*markedHighlight({
-            langPrefix: 'hljs language-',
-            highlight(code, lang) {
-              if ( ['nohighlight', 'plaintext'].includes(('' + lang).trim())) {
-                return code;
-              } else {
-                const language = hljs.getLanguage(lang);
-                if (typeof language === 'undefined') {
-                  return hljs.highlightAuto(code).value;
-                } else {
-                  console.log("highlighting", lang, language)
-                  return hljs.highlight(code, {language: language.name, ignoreIllegals: true }).value;
-                }
-              }
-            }
-          })*/
-      );
-
-      return <string>marked.parse(text);
+      return marked.parse(text);
     },
     data(): Record<string, string> {
       const header: string = this.text.split('------')[0];

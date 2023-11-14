@@ -1,19 +1,17 @@
 <template>
   <div class="home">
-    home
+    not found :§§§
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'NotFound',
 });
 </script>
 
 <style scoped lang="scss">
-.home {
 
-}
 </style>

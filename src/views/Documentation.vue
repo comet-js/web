@@ -10,31 +10,30 @@
     </div>
     <div class="documentation__content">
       <div class="documentation__page">
-        <markdown-text :text="markdown" />
+        <markdown-text :text="markdown" v-if="!error" />
+        <not-found v-else />
       </div>
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
-import TerminalCommand from "../components/TerminalCommand.vue";
-import NavigationBar from "../components/navigation/NavigationBar.vue";
+import { defineComponent } from 'vue';
+import TerminalCommand from '../components/TerminalCommand.vue';
+import NavigationBar from '../components/navigation/NavigationBar.vue';
+import NotFound from '../components/documentation/NotFound.vue';
 
 export default defineComponent({
   name: 'Login',
-  components: {NavigationBar, TerminalCommand},
+  components: {
+    NotFound,
+    NavigationBar,
+    TerminalCommand
+  },
   data() {
     return {
-      markdown: `
-
-`
+      markdown: '',
+      error: false
     }
   },
   computed: {
@@ -59,10 +58,21 @@ export default defineComponent({
     }
   },
   mounted(): void {
-    console.log(this.$route.params);
-    if (!this.$route.params.version) {
-
+    if (!this.$route.params.branch && !this.$route.params.page) {
+      this.$router.push(`/docs/${import.meta.env.COMET_DEFAULT_BRANCH}/${import.meta.env.COMET_DEFAULT_PAGE}`);
+      return;
+    } else if (!this.$route.params.page) {
+      this.$router.push(`/docs/${this.$route.params.branch}/${import.meta.env.COMET_DEFAULT_PAGE}`);
+      return;
     }
+
+    fetch(`https://raw.githubusercontent.com/comet-js/docs/${this.$route.params.branch}/${this.$route.params.page}.md`)
+        .then((response: Response) => {
+          if (response.status !== 200) this.error = true;
+          return response.text();
+        })
+        .then((text: string) => this.markdown = text)
+        .catch(() => this.error = true);
   }
 });
 </script>
