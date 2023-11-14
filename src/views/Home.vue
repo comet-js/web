@@ -11,7 +11,7 @@
         <a href="https://discord.gg/rBp83wXW8n" target="_blank">
           <secondary-button>Discord</secondary-button>
         </a>
-        <router-link to="/documentation">
+        <router-link to="/docs">
           <primary-button>Documentation</primary-button>
         </router-link>
       </div>

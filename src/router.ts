@@ -9,7 +9,7 @@ export default createRouter({
             component: Home,
         },
         {
-            path: '/documentation',
+            path: '/docs/:branch/:page?',
             component: () => import('@/views/Documentation.vue'),
         },
         {

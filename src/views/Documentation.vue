@@ -6,29 +6,11 @@
       <div class="documentation__logo" v-if="false">
         <img class="home__logo" src="../assets/images/logo_white.png">
       </div>
-      <div class="documentation__menu">
-        <div class="documentation__category">
-          <div class="documentation__title">Getting Started</div>
-          <div class="documentation__link documentation__link--selected">Installation</div>
-          <div class="documentation__link">Configuration</div>
-          <div class="documentation__link">Directory Structure</div>
-          <div class="documentation__link">Frontend</div>
-          <div class="documentation__link">Starter Kits</div>
-          <div class="documentation__link">Deployment</div>
-        </div>
-        <div class="documentation__category">
-          <div class="documentation__title">The Basics</div>
-          <div class="documentation__link">Routing</div>
-          <div class="documentation__link">Middleware</div>
-          <div class="documentation__link">Controllers</div>
-          <div class="documentation__link">Requests</div>
-          <div class="documentation__link">Bundles</div>
-        </div>
-      </div>
+      <navigation-bar />
     </div>
     <div class="documentation__content">
       <div class="documentation__page">
-        cc
+        <markdown-text :text="markdown" />
       </div>
       a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
       a<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -43,10 +25,45 @@
 <script lang="ts">
 import {defineComponent} from "vue";
 import TerminalCommand from "../components/TerminalCommand.vue";
+import NavigationBar from "../components/navigation/NavigationBar.vue";
 
 export default defineComponent({
   name: 'Login',
-  components: {TerminalCommand},
+  components: {NavigationBar, TerminalCommand},
+  data() {
+    return {
+      markdown: `
+
+`
+    }
+  },
+  computed: {
+    links(): { title: string, childrens: [] }[] {
+      const links: { title: string, childrens: [] }[] = [];
+      const lines: string[] = this.markdown.split('\n');
+
+      lines.forEach((line: string) => {
+        if (line[0] && line[1] && line[2] && line[0] === '#' && line[1] === '#' && line[2] === '#') {
+          links[links.length - 1].childrens.push({
+            title: line.replace('### ', ''),
+          });
+        } else if (line[0] && line[1] && line[0] === '#' && line[1] === '#') {
+          links.push({
+            title: line.replace('## ', ''),
+            childrens: []
+          });
+        }
+      });
+
+      return links;
+    }
+  },
+  mounted(): void {
+    console.log(this.$route.params);
+    if (!this.$route.params.version) {
+
+    }
+  }
 });
 </script>
 
@@ -90,45 +107,6 @@ export default defineComponent({
     top: 0;
     border-bottom: 1px solid rgba(223, 239, 254, 0.137);
     background: linear-gradient(145.37deg, rgba(255, 255, 255, 0.09) -8.75%, rgba(255, 255, 255, 0.027) 83.95%);
-  }
-
-  &__menu {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  &__category {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__title {
-    color: #FFFFFF;
-    font-size: 13px;
-    font-weight: 600;
-    padding-bottom: 14px;
-  }
-
-  &__link {
-    color: #A1A1AA;
-    font-size: 14px;
-    font-weight: 500;
-    padding-left: 16px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    border-left: 1px solid rgba(223, 239, 254, 0.137);
-    transition: 150ms;
-    cursor: pointer;
-
-    &--selected {
-      border-left: 1px solid #f0004f;
-      color: #ffffff;
-    }
-
-    &:hover {
-      color: #ffffff;
-    }
   }
 
   &__content {
